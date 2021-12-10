@@ -13,6 +13,7 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const unsigned int gappx     = 5;
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
     [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -46,7 +47,7 @@ static const Rule rules[] = {
     { "Firefox", NULL,     NULL,           0,    	  0,          0,          -1,        -1 },
     { "st",      NULL,     NULL,           0,         0,          1,           0,        -1 },
     { NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-    { NULL,     "spterm",  NULL,	   SPTAG(0),  0,	  0,           1,        -1 },
+    { NULL,     "spterm",  NULL,	   SPTAG(0),  1,	  0,           1,        -1 },
     { NULL,     "spfm",	   NULL,	   SPTAG(1),  0,          0,	       1,	 -1 },
     { NULL,	"keepassxc",	NULL,	   SPTAG(2),  0,	  0,	       0,	 -1 },
 };
@@ -117,7 +118,8 @@ static Key keys[] = {
     TAGKEYS(                        XK_8,                      7)
     TAGKEYS(                        XK_9,                      8)
     { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    { ControlMask,             	XK_space,  spawn,          SHCMD("rofi -show window") },
+    { ControlMask,             	    XK_space,  spawn,          SHCMD("rofi -show window") },
+    { MOD4KEY,             	    XK_p,      spawn,          SHCMD("j4-dmenu-desktop") },
     { MODKEY,            			XK_y,  	   togglescratch,  {.ui = 0 } },
     { MODKEY,            			XK_u,	   togglescratch,  {.ui = 1 } },
     { MODKEY,            			XK_x,	   togglescratch,  {.ui = 2 } },
